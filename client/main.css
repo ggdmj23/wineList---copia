@@ -1,0 +1,1382 @@
+body {
+    font-family: sans-serif;
+    background-color: #315481;
+    background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+    background-attachment: fixed;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 0;
+    margin: 0;
+    font-size: 14px;
+}
+ 
+.container {
+    max-width: 90%;
+    margin: 0 auto;
+    min-height: 100%;
+    background-color: #315481;
+    background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+    background-attachment: fixed;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+/* ///// */
+/* COVER */
+/* ///// */
+
+.jumbotron {
+    text-align: center;
+    margin-top: 120px;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border-top: 2px solid white;
+    border-bottom: 3px solid darkgray;
+}
+
+.win-cover {
+    font-size: 120px;
+    font-family: 'Satisfy', cursive, Verdana, sans-serif;
+    color: #315481;
+    display: inline-block;
+    text-shadow: 4px 4px 5px #315481;
+}
+
+.e-cover {
+    font-size: 75px;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    margin-left: -10px;
+    color: black;
+    text-shadow: 4px 4px 5px #315481;
+}
+
+.list-cover {
+    font-size: 90px;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    color: #315481;
+    text-shadow: 4px 4px 5px #315481;
+}
+
+.log-in {
+    display: inline-block;
+}
+
+.btn-info {
+    border-top: 2px solid white;
+    border-right: 2px solid lightgray;
+    border-radius: 5px;
+    border-style: outset;
+    color: black;
+}
+
+/* ///////////// */
+/* CONTACT EMAIL */
+/* ///////////// */
+
+.wine-row-fixedUserList {
+    width: 50%;
+    margin-top: 51px;
+    margin-right: auto;
+    margin-left: auto;
+    position: fixed;
+    margin: 1px solid white;
+    z-index: 1;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border-top: 2px solid slategray;
+    border-bottom: 1px solid white;
+    border-right: 1px solid slategray;
+}
+
+/* ////// */
+/* FOOTER */
+/* ////// */
+
+.date-cont {
+    margin-right: 0;
+    position: absolute;
+    right: 0;
+    width: 250px;
+    height: 40px;
+    overflow: hidden; 
+}
+
+.footer {
+    border-top: 2px solid slategray;
+}
+
+/* ////// */
+/* NAVBAR */ 
+/* ////// */
+
+nav {
+    height: 51px;
+    width: 100%;  
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    position: relative;
+    margin-right: auto;
+    margin-left: auto; 
+}
+
+.logo {
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    border-left: 3px solid lightgray;
+}
+
+.win {
+    font-size: 40px;
+    font-family: 'Satisfy', cursive, Verdana, sans-serif;
+    color: #315481;
+    text-shadow: 2px 2px 5px #315481;
+}
+
+.e- {
+    font-size: 25px;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    margin-left: -2px;
+    color: black;
+    text-shadow: 2px 2px 5px #315481;
+}
+
+.list {
+    font-size: 30px;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    color: #315481;
+    text-shadow: 2px 2px 5px #315481;
+}
+
+.nav li {
+    list-style: none;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    padding: 0;
+    margin: 0;
+}
+
+.nav a:link {
+    background-color: lightblue;
+    color: white;
+}
+
+.nav a:hover {
+    background-color: aqua;
+}
+
+.shadow {
+    border-top: 1px solid white;
+    border-right: 1px solid white;
+    border-bottom: 2px solid darkgray;
+    border-left: 2px solid darkgray;
+}
+
+.navbar-buttons {
+    float: right;
+    margin: -40px 100px 0 0;
+}
+
+.buttonAdd {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    margin: -10px -50px 0 0 ;
+    float: right;
+    border-radius: 5px;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    color: #315481;
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-bottom: 3px solid slategray;
+    border-right: 3px solid slategray;
+}
+
+.login {
+    display: block;
+    text-align: center;
+    margin: -10px;
+    margin-right: 30px;
+    float: left;
+    border-top: 2px solid white;
+    border-right: 2px solid lightgray;
+    border-radius: 5px;
+    border-style: outset;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    color: #315481;
+    padding: 5px 3px;
+}
+
+/* ////////// */
+/* MODAL FORM */
+/* ////////// */
+
+form {
+    margin-top: 10px;
+    margin-bottom: -10px;
+    position: relative;
+}
+
+.modal-title {
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border-top: 2px solid lightgray;
+    border-right: 2px solid lightgray;
+    border-bottom: 2px solid slategray;
+    border-left: 2px solid slategray;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.wine-inputs {
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    min-height: 300px;
+    max-height: 300px;
+    max-width: 100%;
+    border-top: 2px solid lightgray;
+    border-right: 2px solid lightgray;
+    border-bottom: 2px solid slategray;
+    border-left: 2px solid slategray;
+    border-radius: 5px;
+}
+
+.w_data {
+    max-height: 250px;
+    max-width: 40%;
+    border-radius: 5px;
+    float: left;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.w_metadata {
+    max-height: 250px;
+    max-width: 40%;
+    width: 35%;
+    border-radius: 5px;
+    float:left;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.new-wine input {
+    box-sizing: border-box;
+    padding: 3px 5px;
+    background: white;
+    border-radius: 5px;
+    width: 150px;
+    font-size: 1em;
+    border-bottom: 1px solid lightgray;
+    border-left: 1px solid lightgray;
+    border-top: 2px solid slategray;
+    border-right: 2px solid slategray;
+    margin-left: 85px;
+}
+/*
+@media (max-width: 600px) {
+}
+*/
+.modal-button {
+    border-bottom: 2px solid slategray;
+    border-left: 2px solid slategray;
+}
+
+.new-wine input:focus {
+    outline: 10px;
+}
+
+/* //// */
+/* WINE */
+/* //// */
+
+.wine-row {
+    width: 98%;
+    margin-top: 120px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.edit {
+    margin: 3px 0 0 5px;
+}
+
+.delete {
+    margin: -30px 5px 0 0;
+    float: right;
+}
+
+.button-private {
+    margin: -30px 10px 0 0;
+    float: right;
+}
+
+.label-public {
+    visibility: hidden;
+}
+
+.label-private {
+    margin: -23px 10px 0 0;
+    float: right;
+}
+
+.public-off {
+    visibility: visible;
+    color: black;
+    margin-left: -50px;
+}
+
+.public-on {
+    visibility: hidden;
+}
+
+.private-off {
+    visibility: hidden;
+}
+
+.private-on {
+    visibility: visible;
+    color: black;
+    margin-left: 15px;
+}
+
+li {
+    position: relative;
+    list-style: none;
+    padding: 3px;
+}
+ 
+.checked .img-cont {
+    border: 1px solid black;
+    background-color: red;
+}
+
+.checked .img {
+    height: 60px;
+}
+    
+@media (max-width: 600px) {
+    
+.wine-row {
+    width: 98%;
+    margin-top: 160px;
+    margin-right: auto;
+    margin-left: auto;
+}
+    
+.thumbnail {
+    margin: 15px 0px;
+    min-height: 400px;
+    max-height: 450px;
+    max-width: 100%;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border: 1px solid lightgray;
+    font-size: 85%;
+}    
+}
+
+* {
+    box-sizing: border-box;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.thumbnail {
+    margin: 15px 0px;
+    min-height: 450px;
+    max-height: 450px;
+    max-width: 100%;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border: 1px solid lightgray;
+}
+
+.img-cont {
+    max-height: 200px;
+    max-width: 33%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    float: left;
+    margin: 5px 0 0 5px;
+    background-color: #315481;
+    background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+    background-attachment: fixed;
+}
+
+.img {
+    max-height: 150px;
+    max-width: 100%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.caption {
+    height: 350px;
+    max-width: 60%;
+    min-width: 60%;
+    float: right;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    word-break: normal;
+    overflow: auto;
+    margin: 5px 5px 0 0;
+}
+
+.data {
+    max-height: 180px;
+    max-width: 33%;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    float: left;
+    margin: 5px 0 0 5px;
+    word-break: normal;
+    overflow: auto;
+    font-size: 10px;
+}
+
+.stars {
+    position: absolute;
+    left: 30px;
+    bottom: 20px;
+}
+
+/* /////////// */
+/* SINGLE WINE */
+/* /////////// */
+
+@media and screen (min-width: 480px) {
+}
+
+.thumbnailSingleMenu {
+    margin-top: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    min-height: 480px;
+    max-height: 480px;
+    max-width: 75%;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-bottom: 3px solid slategray;
+    border-right: 3px solid slategray;
+}
+
+.img-contSingleMenu {
+    max-height: 350px;
+    min-height: 200px;
+    max-width: 35%;
+    border-top: 2px solid slategray;
+    border-left: 2px solid slategray;
+    border-bottom: 3px solid white;
+    border-right: 3px solid white;
+    margin: 25px;
+    float:right;
+}
+
+.imgSingleMenu {
+    max-height: 350px;
+    min-height: 200px;
+    max-width: 100%;
+    border-top: 2px solid white;
+    border-right: 2px solid lightgray;
+    border-radius: 5px;
+    border-style: outset;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -7px;
+}
+
+.miniLogo{
+    float:right;
+    margin-top: -80px;
+    margin-right: 135px;
+}
+
+.winMini {
+    font-size: 30px;
+    font-family: 'Satisfy', cursive, Verdana, sans-serif;
+    color: #315481;
+    display: inline-block;
+    text-shadow: 4px 4px 5px #315481;
+}
+
+.e-Mini {
+    font-size: 17px;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    margin-left: -5px;
+    color: black;
+    text-shadow: 4px 4px 5px #315481;
+}
+
+.listMini {
+    font-size: 20px;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    color: #315481;
+    text-shadow: 4px 4px 5px #315481;
+}
+
+.miniLogo a {
+    text-decoration: none;
+}
+
+.captionSingleMenu {
+    max-height: 450px;
+    min-height: 450px;
+    max-width: 55%;
+    min-width: 55%;
+    margin: 25px 0 0 0;
+    word-break: normal;
+    overflow: visible;
+    color: #315481;
+    font-family: 'Special Elite', cursive, Verdana, sans-serif;
+}
+
+.wineSingleName { 
+    margin-top: 0px;
+    margin-bottom: 0px;
+    text-align: center;
+    color: #315481;
+    font-family: 'Special Elite', cursive, Verdana, sans-serif;
+}
+
+.captionData{
+    max-height: 320px;
+    min-height: 320px;
+}
+
+.captionSingleMenu li {
+    border-bottom: 1px solid white;
+}
+
+.ratingSingle { 
+    margin-left: 50px; 
+    margin-top: 20px;
+    font-size: 14px;
+}
+
+.mystar .current-rating {
+    color: yellow;
+}
+
+.mystar .active {
+    color: orange;
+}
+
+.user{
+    border:3px solid black;
+}
+
+/* //// */
+/* MENU */
+/* //// */
+
+.wine-rowMenu {
+    width: 95%;
+    margin-top: 10px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.thumbnailMenu {
+    margin: 0px 0px;
+    min-height: 480px;
+    max-height: 480px;
+    max-width: 100%;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-bottom: 3px solid slategray;
+    border-right: 3px solid slategray;
+    margin-bottom: 50px;
+}
+
+.wineTitle {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.wineName {
+    margin-top: 0;
+    min-height: 60px;
+    max-height: 60px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.img-contMenu {
+    max-height: 150px;
+    min-height: 150px;
+    max-width: 65%;
+    border-top: 3px solid lightgray;
+    border-left: 3px solid lightgray;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #315481;
+    background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+    background-attachment: fixed;
+}
+
+.imgMenu {
+    max-height: 150px;
+    min-height: 150px;
+    max-width: 100%;
+    border-top: 2px solid white;
+    border-right: 2px solid lightgray;
+    border-radius: 5px;
+    border-style: outset;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -7px;
+}
+
+.captionMenu {
+    height: 150px;
+    max-width: 100%;
+    word-break: normal;
+    overflow: visible;
+    margin-top: 10px;
+}
+
+.captionMenu li {
+    margin: 0 0 0 -40px;
+    border-bottom: 1px solid white;
+}
+
+.rating {
+    font-size: 16px;
+    position: absolute;
+    left: 25px;
+    bottom: 80px;
+}
+
+.mystar .current-rating {
+  color: yellow;
+}
+
+.mystar{
+    position: absolute;
+    bottom: 65px;
+    left: 25px;
+}
+
+.mystar .active {
+  color: orange;
+}
+
+.user{
+    border:3px solid black;
+}
+
+.miniLogo1 {
+    position: absolute;
+    bottom: 65px;
+    left: 120px;
+    display: block;
+}
+
+.winMini1 {
+    font-size: 20px;
+    font-family: 'Satisfy', cursive, Verdana, sans-serif;
+    color: #315481;
+    display: inline-block;
+    text-shadow: 4px 4px 5px #315481;
+}
+
+.e-Mini1 {
+    font-size: 12px;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    margin-left: -5px;
+    color: black;
+    text-shadow: 4px 4px 5px #315481;
+}
+
+.listMini1 {
+    font-size: 15px;
+    font-family: 'Orbitron', sans-serif, Verdana, sans-serif;
+    color: #315481;
+    text-shadow: 4px 4px 5px #315481;
+}
+
+.miniLogo1 a {
+    text-decoration: none;
+}
+
+.statsFull{
+    text-align: center;
+    margin-top: -35px;
+    font-size: 16px;
+    color: #315481;
+    font-family: 'Special Elite', cursive, Verdana, sans-serif;
+    text-align: center;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 600px) {
+    
+.statsFull{
+    text-align: center;
+    margin-top: -20px;
+    font-size: 16px;
+    color: #315481;
+    font-family: 'Special Elite', cursive, Verdana, sans-serif;
+    text-align: center;
+}    
+    
+.thumbnailMenu {
+    margin-top: -50px;
+    margin-bottom: 60px;
+    min-height: 430px;
+    max-height: 480px;
+    max-width: 100%;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border-top: 2px solid white;
+    border-left: 2px solid white;
+    border-bottom: 3px solid slategray;
+    border-right: 3px solid slategray;
+    font-size: 85%;  
+}  
+    
+.wineName {
+    margin-top: 0;
+    min-height: 60px;
+    max-height: 60px;
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto; 
+}
+
+.wineTitle {
+    text-align: center;
+    margin-top: 10px;
+}    
+    
+.img-contMenu {
+    max-height: 150px;
+    min-height: 120px;
+    max-width: 65%;
+    border-top: 3px solid lightgray;
+    border-left: 3px solid lightgray;
+    margin-top: 0;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #315481;
+    background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+    background-attachment: fixed;
+}
+
+.imgMenu {
+    max-height: 150px;
+    min-height: 150px;
+    max-width: 100%;
+    border-top: 2px solid white;
+    border-right: 2px solid lightgray;
+    border-radius: 5px;
+    border-style: outset;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -7px;
+}    
+}
+
+/* /////// */
+/* SIDENAV */
+/* /////// */
+
+.sidenav {
+    margin-top: 37px;       
+    height: 520px;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 800;
+    left: 0;
+    background-color: #315481;
+    background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+    overflow-x: hidden;
+    transition: 0.6s;
+    padding-top: 60px;
+    border-bottom: 1px solid slategray;
+    border-top: 2px solid slategray;
+    border-right: 1px solid white;
+}
+
+.openbtn {
+    margin-top: -35px;  
+    width:250px;
+    float:left;
+    font-size: 20px;
+    cursor: pointer;
+    color: #315481;
+    font-family: 'Special Elite', cursive, Verdana, sans-serif;
+}
+
+.sidenav a {
+    padding: 5px 5px 5px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: black;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 36px;
+    margin-left: 0px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.side {
+    padding: 5px 5px 5px 20px;
+    font-size: 16px;
+    color: white;
+    display: block;
+    transition: 0.3s;    
+}
+
+.selectUsers, .selectTypes, .selectDO, .selectCountry {
+    width: 220px;
+    font-size: 16px;
+    padding: 5px;
+}
+
+.unfilterUsers{
+}
+
+.optionsUsers{
+}
+
+.optionsTypes, .optionsUsers, .optionsCountry, .optionsDO {
+    margin-top: 10px;
+}
+
+.unfilterTypes{
+}
+
+/* ////////////// */
+/* SIDENAV SEARCH */
+/* ////////////// */
+
+/* Dropdown Button */
+.dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dropdown button on hover & focus */
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #3e8e41;
+}
+
+/* The search field */
+#myInput {
+  box-sizing: border-box;
+  background-image: url('searchicon.png');
+  background-position: 14px 12px;
+  background-repeat: no-repeat;
+  font-size: 16px;
+  padding: 14px 20px 12px 45px;
+  border: none;
+  border-bottom: 1px solid #ddd;
+}
+
+/* The search field when it gets focus/clicked on */
+#myInput:focus {outline: 3px solid #ddd;}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f6f6f6;
+  min-width: 230px;
+  border: 1px solid #ddd;
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+    
+/* Show the dropdown menu (use JS to add this class to the .dropdown-content container when the user clicks on the dropdown button) */
+.show {
+    display:block;
+}
+
+/* //////////// */
+/* FULL SIDENAV */
+/* //////////// */
+
+.sidenavFull {
+    margin-top: 37px;       
+    height: 520px;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 800;
+    left: 0;
+    background-color: #315481;
+    background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+    overflow-x: hidden;
+    transition: 0.6s;
+    padding-top: 60px;
+    border-bottom: 1px solid slategray;
+    border-top: 2px solid slategray;
+    border-right: 1px solid white;
+}
+
+.openbtnFull {
+    margin-top: -35px;  
+    width:250px;
+    float:left;
+    font-size: 20px;
+    cursor: pointer;
+    color: #315481;
+    font-family: 'Special Elite', cursive, Verdana, sans-serif;
+}
+
+.sidenavFull a {
+    padding: 5px 5px 5px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenavFull a:hover {
+    color: black;
+}
+
+.sidenavFull .closebtnFull {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 36px;
+    margin-left: 0px;
+}
+
+.closeNavFull{
+    margin-top: 3px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+/* ////////////// */
+/* LIST ROW FIXED */
+/* ////////////// */
+
+.list-row {
+    width: 100%;
+    margin-top: 51px;
+    margin-right: auto;
+    margin-left: auto;
+    position: fixed;
+    z-index: 1;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border-top: 2px solid lightgray;
+    border-bottom: 1px solid white;
+}
+
+.side-list{
+    margin-top: 50px;
+}
+
+.stats{
+    margin-left: 60px;
+    margin-top: -37px;
+}
+
+.check-hide{
+    display: inline-block;
+    margin-left: 160px;
+}
+
+.available{
+    padding-left: 10px;
+    display: inline-block;
+}
+
+.on {
+    color: green;
+}
+
+.off {
+    color: red;
+}
+
+/* ///////////////////// */
+/* LIST & MASTER SIDENAV */
+/* ///////////////////// */
+
+.sidenav2 {
+    margin-top: 42px;       
+    height: 520px;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 800;
+    left: 0;
+    background-color: #315481;
+    background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+    overflow-x: hidden;
+    transition: 0.6s;
+    padding-top: 60px;
+    border-bottom: 1px solid slategray;
+    border-top: 2px solid slategray;
+    border-right: 1px solid white;
+}
+
+.openbtn2 {
+    margin-top: -40px;  
+    width:200px;
+    float:left;
+    font-size: 20px;
+    cursor: pointer;
+    color: #315481;
+}
+
+.sidenav2 a {
+    padding: 5px 5px 5px 20px;
+    text-decoration: none;
+    font-size: 16px;
+    color: white;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav2 a:hover {
+    color: black;
+}
+
+.sidenav2 .closebtn2 {
+    position: absolute;
+    top: 0;
+    right: 15px;
+    font-size: 36px;
+    margin-left: 0px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav2 {padding-top: 15px;}
+  .sidenav2 a {font-size: 18px;}
+}
+
+/*/////*/
+/* INV */
+/*/////*/
+
+.containerTable{
+    margin-top: 105px;
+}
+
+@media (max-width: 600px) {
+    
+  .containerTable{
+    margin-top: 135px;
+}
+}
+
+.inv{
+    overflow: auto;
+}
+
+.statsInv {
+    margin-top: -37px;
+    margin-left: 220px;
+}
+
+table {
+    border-collapse: collapse;
+    font-size: 12px;
+}
+tr .sticky {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 105;
+}
+
+th {
+    background-color: #d2edf4;
+    color: navy;
+}
+
+td {
+    text-align: left;
+    vertical-align: top;
+    word-break: normal;
+    max-width: 85px;
+    overflow: auto;
+}
+
+th, td {
+    padding: 5px;
+    text-align: left;
+    border: 1px solid black;
+    font-size: 90%;
+}
+
+tr:nth-child(even) {
+    background-color: antiquewhite;
+}
+
+tr:nth-child(odd) {
+    background-color: lightgray;
+}
+
+tr:hover {
+    background-color: white;
+}
+
+.dateWide {
+    font-size: 9px;
+}
+
+.varietyWide {
+    min-width: 115px;
+}
+
+.number {
+    min-width: 50px;
+}
+
+.supplier {
+    min-width: 75px;
+    max-width: 75px;
+}
+
+.image {
+    min-width: 50px;
+    max-width: 50px;
+}
+
+.producer {
+    min-width: 100px;
+}
+
+.vintage {
+    min-width: 85px;
+}
+
+.price {
+    min-width: 75px;
+}
+
+.abv {
+    min-width: 65px;
+}
+
+.cl {
+    min-width: 55px;
+}
+
+.date {
+    min-width: 65px;
+}
+
+.sort-number, .sort-name, .sort-producer, .sort-date {
+    vertical-align: middle;
+}
+
+/* //////////////// */
+/* SINGLE EDIT WINE */
+/* //////////////// */
+
+.thumbnailEdit {
+    margin-top: 100px;
+    min-height: 480px;
+    max-width: 70%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 20px;
+    background: #d2edf4;
+    background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
+    border: 1px solid lightgray;
+    border-radius: 5px;
+}
+
+.editEdit {
+    margin-top: 10px;
+}
+
+.img-contEdit {
+    max-height: 350px;
+    min-height: 200px;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 20px;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    background-color: #315481;
+    background-image: linear-gradient(to bottom, #315481, #918e82 100%);
+    background-attachment: fixed;
+}
+
+.imgEdit {
+    min-height: 200px;
+    max-height: 350px;
+    max-width: 100%;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid lightgray;
+    border-radius: 5px;
+    display: block;
+}
+.captionEdit {
+    max-height: 412px;
+    min-height: 412px;
+    width: 90%;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid white;
+    border-radius: 5px;
+    word-break: normal;
+    overflow: auto;
+}
+
+.dataEdit {
+    max-height: 412px;
+    min-height: 412px;
+    width: 90%;
+    margin-top: 25px;
+    margin-right: auto;
+    margin-left: auto;
+    border: 1px solid white;
+    border-radius: 5px;
+    word-break: normal;
+    overflow: auto;
+}
+
+li {
+    position: relative;
+    list-style: none;
+    padding: 5px;
+}
+
+.list-ownerEdit{
+    margin-top: : 10px;
+}
+
+.deleteEdit {
+    margin: -10px 5px 0 0;
+    float: right;
+}
+
+.button-privateEdit {
+    margin: -10px 10px 0 0;
+    float: right;
+}
+
+.label-publicEdit {
+    visibility: hidden;
+}
+
+.label-privateEdit {
+    margin: 20px 10px 0 0;
+    float: right;
+}
+
+.public-offEdit {
+    visibility: visible;
+    color: black;
+    font-weight: bold;
+    margin-left: -50px;
+}
+
+.public-onEdit {
+    visibility: hidden;
+}
+
+.private-offEdit {
+    visibility: hidden;
+}
+
+.private-onEdit {
+    visibility: visible;
+    color: black;
+    margin-left: 15px;
+}
+
+.checked .img-contEdit {
+    border: 1px solid black;
+    background-color: red;
+}
+
+.checked .imgEdit {
+    height: 60px;
+}
+    
+@media (max-width: 600px) {
+    
+  .thumbnailEdit {
+    width: 98%;
+    margin-top: 20px;
+    margin-right: auto;
+    margin-left: auto;
+    }
+}
+
+
+
+

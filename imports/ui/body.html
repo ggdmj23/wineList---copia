@@ -1,0 +1,746 @@
+<!-- COVER -->
+
+<template name="welcome"> 
+        <div class="jumbotron">
+            <h1><span class="win-cover">Win</span><span class="e-cover"> e-</span><span class="list-cover">List<sup><small> &reg;</small></sup></span></h1>
+            <div class="login-cover">
+                <span class="win">W</span>
+                <span class="e-"> e-</span>
+                <span class="list">lcome</span>
+                <span class="log-in list">{{> loginButtons align="right"}}</span>
+                <span class="list"><a href="/Menu" class="btn btn-info">ENTER</a></span>
+            </div>    
+        </div>
+</template> 
+
+<!-- USERS INFO -->
+
+<template name="usersInfo">  
+    <div>
+        <div class="user col-md-4 col-s-6 col-xs-12">
+            {{>listAll}}
+        </div>
+    </div>          
+</template>
+
+<!-- NAVBAR -->
+
+<template name="navbar">
+    {{> wine_form}}
+    <nav class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" 
+                        class="navbar-toggle collapsed" 
+                        data-toggle="collapse" 
+                        data-target="#main_navbar" 
+                        aria-expanded="false" 
+                        aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand brand logo" href="/">
+                    <span class="win">Win</span><span class="e-"> e-</span><span class="list">List<sup><small> &reg;</small></sup></span>
+                </a>
+            </div>
+            <div id="main_navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="shadow active"><a href="/Menu">Public Menu</a></li>
+                    {{#if currentUser}}
+                    <li class="shadow"><a href="/fullMenu">{{username}} Menu</a></li>
+                    <li class="shadow"><a href="/userList">{{username}} List</a></li>
+                    <li class="shadow"><a href="/wineInv">{{username}} Data</a></li>
+                    <li class="shadow"><a href="/wineList">Master</a></li>
+                    {{/if}}
+                    <li class="shadow">
+                        <a href="#">Wine Total<strong> {{winesCount}}</strong></a>
+                    </li>
+                    <li class="dropdown shadow">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Contact<span class="caret"></span></a>
+                        <ul class="nav dropdown-menu">
+                            <li class="shadow"><a href="/usersInfo">Email</a></li>
+                            <li class="shadow"><a href="#">Address</a></li> 
+                            <li class="shadow"><a href="#">Skype</a></li>
+                        </ul>
+                    </li>
+                    <li class="shadow"><a href="#">News</a></li>
+                </ul>
+            </div>
+            <div class="navbar-buttons">
+                {{#if currentUser}}   
+                <button class="btn btn-info navbar-right js-show-image-form buttonAdd"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>&nbsp;Wine</button>
+                {{/if}}      
+                <span class="navbar-right navbar-text login login-button">{{> loginButtons align="right"}}</span>
+            </div>
+        </div>
+    </nav>     
+</template>
+
+<!-- MODAL FORM -->
+
+<template name="wine_form">       
+        <div class="modal fade" id="image_add_form">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <div class="modal-title">
+                            <h2 class="modal-h2">Insert New Wine</h2>
+                            <p>Wine List:<strong>&nbsp;{{currentUser.username}}</strong></p>
+                        </div>
+                    </div>
+                    <div class="modal-body">
+                        <div class="container wine-inputs">
+                            {{#if currentUser}}
+                            <form class="new-wine" id="new-wine">
+                                <div class="w_data">
+                                    <input type="text" name="w_img" placeholder="Image" />
+                                    <br/>
+                                    <input type="text" name="w_name" placeholder="Name" />
+                                    <br/>
+                                    <input type="text" name="w_producer" placeholder="Producer" />
+                                    <br/>
+                                    <input type="text" name="w_vintage" placeholder="Vintage" />
+                                    <br/>
+                                    <input type="text" name="w_price" placeholder="Price" />
+                                    <br/>
+                                    <input type="text" name="w_do" placeholder="DO" />
+                                    <br/>
+                                    <input type="text" name="w_variety" placeholder="Variety" />
+                                    <br/>
+                                    <input type="text" name="w_text" placeholder="Note" />
+                                    <br/>
+                                </div>
+                                <div class="w_metadata">
+                                    <input type="text" name="w_type" placeholder="Type" />
+                                    <br/>
+                                    <input type="text" name="w_country" placeholder="Country" />
+                                    <br/>
+                                    <input type="text" name="w_region" placeholder="Region" />
+                                    <br/>
+                                    <input type="text" name="w_ref" placeholder="Ref" />
+                                    <br/>
+                                    <input type="text" name="w_cost" placeholder="Cost" />
+                                    <br/>
+                                    <input type="text" name="w_supplier" placeholder="Supplier" />
+                                    <br/>
+                                    <input type="text" name="w_abv" placeholder="abv" />
+                                    <br/>
+                                    <input type="text" name="w_cl" placeholder="cl" />
+                                    <br/>
+                                    <input type="text" name="w_qty" placeholder="Qty" />
+                                    <br/>
+                                </div>
+                            </form>
+                            {{/if}}
+                        </div>
+                        <div class="modal-footer">
+                            <button form="new-wine" class=" modal-button btn btn-success">Save</button>
+                            <button class="modal-button btn btn-warning" data-dismiss="modal">Close</button>
+                        </div> 
+                        
+                    </div>
+                </div>
+            </div>            
+        </div>
+</template>
+
+<!-- MENU -->
+
+<template name="Menu">  
+        <div class="row list-row">
+            <div class="col-md-12">
+                <div class="side-list">
+                    <div class="col-md-12">
+                        {{> sidenav}}  
+                    </div>
+                </div>  
+                <div class="statsFull">
+                    <span class="">{{getFilterUser}} total {{userCount}}</span>
+                    <span class="">{{#if filtering_types}}&nbsp;/&nbsp;{{getFilterType}} {{filterTypeCount}}{{/if}}</span>
+                    <span class="">{{#if filtering_country}}&nbsp;/&nbsp;{{getFilterCountry}} {{filterCountryCount}}{{/if}}</span>
+                    <span class="">{{#if filtering_DO}}&nbsp;/&nbsp;{{getFilterDO}} {{filterDOCount}}{{/if}}</span>
+                </div>
+            </div>
+        </div>   
+        <div class="row wine-row"> 
+            {{#each wines}}
+            <div class="col-md-3 col-s-4 col-xs-6" id="{{_id}}">
+                {{> wineFull}}
+            </div>
+            {{/each}}
+        </div>    
+</template>
+
+<!-- SIDENAV -->
+
+<template name="sidenav">
+    <div class="openbtn">
+        <div id="mySidenav" class="sidenav">
+            <a href="javascript:void(0)" class="closebtn closeNav">&times;</a>
+            <div class="optionsUsers">
+                <a class="side unfilterUsers" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all wines</a>
+                <select class="selectUsers" name="wines" id="wineUsers">
+                    <option value='' disabled selected style='display:none;'>Select Menu</option>
+                    {{#each user}}
+                    <option value="{{_id}}">{{username}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="optionsTypes">
+                <a class="side unfilterTypes" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all types</a>
+                <select class="selectTypes" name="wines" id="wineTypes">
+                    <option value="" default>Filter by type</option>
+                    <option value="Copas">By the Glass</option>
+                    <option value="Espumoso">Sparkling</option>
+                    <option value="Espumoso Rosado">Rose Sparkling</option>
+                    <option value="Generoso">Fortified</option>
+                    <option value="Blanco">White</option>
+                    <option value="Rosado">Rose</option>
+                    <option value="Tinto">Tinto</option>
+                    <option value="Dulce">Sweet</option>  
+                </select>
+            </div>
+            <div class="optionsCountry">
+                <a class="side unfilterCountry" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all countries</a>
+                <select class="selectCountry" name="wines" id="wineCountry">
+                    <option value="" default>Filter by country</option>
+                    <option value="España">Spain</option>
+                    <option value="Francia">France</option>
+                    <option value="Italia">Italy</option>
+                    <option value="Alemania">Germany</option>
+                    <option value="Portugal">Portugal</option>
+                </select>
+            </div>
+            <div class="optionsDO">
+                <a class="side unfilterDO" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all DOs</a>
+                <select class="selectDO" name="wines" id="wineDO">
+                    <option value="" default>Filter by DO</option>
+                    <option value="Alella">Alella</option>
+                    <option value="Cava">Cava</option>
+                    <option value="Conca de Barberà">Conca de Barberà</option>
+                    <option value="Conca del Riu Anoia">Conca del Riu Anoia</option>
+                    <option value="Corpinnat">Corpinnat</option>
+                    <option value="Costers del Segre">Costers del Segre</option>
+                    <option value="Empordà">Empordà</option>
+                    <option value="Jerez">Jerez</option> 
+                    <option value="Montsant">Montsant</option>
+                    <option value="Penedès">Penedès</option>
+                    <option value="Priorat">Priorat</option>
+                    <option value="Terra Alta">Terra Alta</option>
+                    
+                    <option value="Arbois">Arbois</option>
+                    <option value="Champagne">Champagne</option>
+                    <option value="Givry">Givry</option>
+                </select>
+            </div>
+        </div>
+        <span class="openNav">&#9776; {{getFilterUser}} Public</span>
+    </div>    
+<!--
+            <div class="dropdown">
+                <p><label onclick="myFunction()" class="side" for="wineDO">Find a DO</label></p>
+                <div id="myDropdown" class="dropdown-content">
+                    <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                    <a value="Alella" href="#">Alella</a>
+                    <a value="Cava" href="#">Cava</a>
+                    <a value="Alella" href="#">Conca de Barberà</a>
+                    <a value="Conca de Barberà" href="#">Conca del Riu Anoia</a>
+                    <a value="Corpinnat" href="#">Corpinnat</a>
+                    <a value="Costers del Segre" href="#">Costers del Segre</a>
+                    <a value="Empordà" href="#">Empordà</a>
+                    <a value="Jerez" href="#">Jerez</a>
+                    <a value="Montsant" href="#">Montsant</a>
+                    <a value="Penedès" href="#">Penedès</a>
+                    <a value="Priorat" href="#">Priorat</a>
+                    <a value="Terra Alta" href="#">Terra Alta</a>
+                </div>
+            </div>
+            -->
+<script>
+/* When the user clicks on the button,
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+function filterFunction() {
+  var input, filter, ul, li, a, i;
+  input = document.getElementById("myInput");
+  filter = input.value.toUpperCase();
+  div = document.getElementById("myDropdown");
+  a = div.getElementsByTagName("a");
+  for (i = 0; i < a.length; i++) {
+    txtValue = a[i].textContent || a[i].innerText;
+    if (txtValue.toUpperCase().indexOf(filter) > -1) {
+      a[i].style.display = "";
+    } else {
+      a[i].style.display = "none";
+    }
+  }
+}
+</script>
+</template>
+
+<!-- FULL MENU -->
+
+<template name="fullMenu">  
+        <div class="row list-row">
+            <div class="col-md-12">
+                <div class="side-list">
+                    <div class="col-md-12">
+                        {{> sidenavFull}}  
+                    </div>
+                </div>  
+                <div class="statsFull">
+                    <div class="statsFull">
+                    <span class="">{{loggedusername}} total {{userCount}}</span>
+                    <span class="">{{#if filtering_types}}&nbsp;/&nbsp;{{getFilterType}} {{filterTypeCount}}{{/if}}</span>
+                    <span class="">{{#if filtering_country}}&nbsp;/&nbsp;{{getFilterCountry}} {{filterCountryCount}}{{/if}}</span>   
+                    <span class="">{{#if filtering_DO}}&nbsp;/&nbsp;{{getFilterDO}} {{filterDOCount}}{{/if}}</span>
+                </div>
+                </div>
+            </div>
+        </div>   
+        <div class="row wine-row"> 
+            {{#each wines}}
+            <div class="col-md-3 col-s-4 col-xs-6" id="{{_id}}">
+                {{> wineFull}}
+            </div>
+            {{/each}}
+        </div>    
+</template>
+
+<!-- FULL SIDENAV -->
+
+<template name="sidenavFull">
+    <div class="openbtnFull">
+        <div id="mySidenavFull" class="sidenavFull">
+            <a href="javascript:void(0)" class="closebtnFull closeNavFull">&times;</a>
+            <div class="optionsTypes">
+                <a class="dropdown-item side unfilterTypes" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all wines</a>  
+                <select class="selectTypes" name="wines" id="wineTypes">
+                    <option value="" default>Filter by type</option>
+                    <option value="Copas">By the Glass</option>
+                    <option value="Espumoso">Sparkling</option>
+                    <option value="Espumoso Rosado">Rose Sparkling</option>
+                    <option value="Generoso">Fortified</option>
+                    <option value="Blanco">White</option>
+                    <option value="Rosado">Rose</option>
+                    <option value="Tinto">Tinto</option>
+                    <option value="Dulce">Sweet</option>  
+                </select>
+            </div>
+            <div class="optionsCountry">
+                <a class="side unfilterCountry" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all countries</a>
+                <select class="selectCountry" name="wines" id="wineCountry">
+                    <option value="" default>Filter by country</option>
+                    <option value="España">Spain</option>
+                    <option value="Francia">France</option>
+                    <option value="Italia">Italy</option>
+                    <option value="Alemania">Germany</option>
+                    <option value="Portugal">Portugal</option>
+                </select>
+            </div>
+            <div class="optionsDO">
+                <a class="dropdown-item side unfilterDO" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all DOs</a>
+                <select class="selectDO" name="wines" id="wineDO">
+                    <option value="" default>Filter by DO</option>
+                    <option value="Alella">Alella</option>
+                    <option value="Cava">Cava</option>
+                    <option value="Conca de Barberà">Conca de Barberà</option>
+                    <option value="Conca del Riu Anoia">Conca del Riu Anoia</option>
+                    <option value="Corpinnat">Corpinnat</option>
+                    <option value="Costers del Segre">Costers del Segre</option>
+                    <option value="Empordà">Empordà</option>
+                    <option value="Jerez">Jerez</option> 
+                    <option value="Montsant">Montsant</option>
+                    <option value="Penedès">Penedès</option>
+                    <option value="Priorat">Priorat</option>
+                    <option value="Terra Alta">Terra Alta</option>
+                    
+                    <option value="Arbois">Arbois</option>
+                    <option value="Champagne">Champagne</option>
+                    <option value="Givry">Givry</option>
+                </select>
+            </div>
+        </div>
+        <span class="openNavFull">&#9776; {{username}} Menu</span>
+    </div>    
+</template>        
+
+<!-- WINE FULL -->
+
+<template name="wineFull"> 
+    <div class="container thumbnailMenu">
+        <div class="wineName">
+            <h4 class="wineTitle"><strong>{{w_name}}&nbsp;&nbsp;{{w_vintage}}</strong></h4>
+        </div>
+        <div class="img-contMenu">
+            <a href="/wines/{{_id}}"><img class="imgMenu" src="{{w_img}}"/></a>
+        </div>
+        <div class="captionMenu">
+            <ul>
+                <Li><strong><small>Producer: </small></strong>{{w_producer}}</Li>
+                <Li><strong><small>DO: </small></strong>{{w_do}}</Li>
+                <Li><strong><small>Varieties: </small></strong>{{w_variety}}</Li>
+                <Li><strong><small>Price: </small></strong>{{w_price}}</Li>
+            </ul>
+        </div>
+        <div>
+            <span class="rating">Rating: {{rating}}</span>
+            {{> starsRating id=_id class="js-rate-wine mystar" mutable=true }}
+            <span class="miniLogo1"><span class="winMini1">Win</span><span class="e-Mini1"> e-</span><span class="listMini1">List</span><sup> &reg;</sup></span>
+        </div>
+    </div>
+</template>
+
+<!-- USER LIST -->
+
+<template name="userDisplay">  
+        <div class="row list-row">
+            <div class="col-md-12">
+                <div class="side-list">
+                    <div class="col-md-12">
+                        {{> sidenavList}}  
+                    </div>
+                </div>  
+                <div class="stats">
+                    <span class="check-hide">
+                        <label class="hide-completed"><input type="checkbox"/>&nbsp;Hide <Span class="off">&#10005;</Span></label>
+                    </span>
+                    <span class="available">
+                        Total <strong>{{username}}</strong> {{userCount}} / 
+                        <Span class="on">{{availableWines}} &#10003;</Span>
+                        <Span class="off">{{unavailableWines}} &#10005;</Span>
+                    </span>
+                    {{#if filtering_types}}
+                    <span class="available">
+                        <strong>{{getFilterType}}</strong> {{totalTypeCount}} / 
+                        <Span class="on">{{typeCount}} &#10003;</Span>
+                        <Span class="off">{{notTypeCount}} &#10005;</Span>
+                    </span>
+                    {{/if}}
+                    {{#if filtering_country}}
+                    <span class="available">
+                        <strong>{{getFilterCountry}}</strong> {{totalCountryCount}} / 
+                        <Span class="on">{{countryCount}} &#10003;</Span>
+                        <Span class="off">{{notCountryCount}} &#10005;</Span>
+                    </span>
+                    {{/if}}
+                    {{#if filtering_DO}}
+                    <span class="available">
+                        <strong>{{getFilterDO}}</strong> {{totalDoCount}} / 
+                        <Span class="on">{{doCount}} &#10003;</Span>
+                        <Span class="off">{{notDoCount}} &#10005;</Span>
+                    </span>
+                    {{/if}}
+                </div>
+            </div>
+        </div>   
+        <div class="row wine-row"> 
+            {{#each wines}}
+            <div class="col-md-4 col-s-6 col-xs-12" id="{{_id}}">
+                {{> wine}}
+            </div>
+            {{/each}}
+        </div>    
+</template>
+
+<!-- LIST SIDENAV -->
+
+<template name="sidenavList">
+    <div class="openbtn2">
+        <div id="mySidenav" class="sidenav2">
+            <a href="javascript:void(0)" class="closebtn2 closeNav2">&times;</a>
+            <div class="optionsTypes">
+                <a class="side unfilterTypes" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all wines</a>  
+                <select class="selectTypes" name="wines" id="wineTypes">
+                    <option value="" default>Filter by type</option>
+                    <option value="Copas">By the Glass</option>
+                    <option value="Espumoso">Sparkling</option>
+                    <option value="Espumoso Rosado">Rose Sparkling</option>
+                    <option value="Generoso">Fortified</option>
+                    <option value="Blanco">White</option>
+                    <option value="Rosado">Rose</option>
+                    <option value="Tinto">Tinto</option>
+                    <option value="Dulce">Sweet</option>  
+                </select>
+            </div>
+            <div class="optionsCountry">
+                <a class="side unfilterCountry" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all countries</a>  
+                <select class="selectCountry" name="wines" id="wineCountry">
+                    <option value="" default>Filter by country</option>
+                    <option value="España">Spain</option>
+                    <option value="Francia">France</option>
+                    <option value="Italia">Italy</option>
+                    <option value="Alemania">Germany</option>
+                    <option value="Portugal">Portugal</option>
+                </select>
+            </div>
+            <div class="optionsDO">
+                <a class="side unfilterDO" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all DOs</a>
+                <select class="selectDO" name="wines" id="wineDO">
+                    <option value="" default>Filter by DO</option>
+                    <option value="Alella">Alella</option>
+                    <option value="Cava">Cava</option>
+                    <option value="Conca de Barberà">Conca de Barberà</option>
+                    <option value="Conca del Riu Anoia">Conca del Riu Anoia</option>
+                    <option value="Corpinnat">Corpinnat</option>
+                    <option value="Costers del Segre">Costers del Segre</option>
+                    <option value="Empordà">Empordà</option>
+                    <option value="Jerez">Jerez</option> 
+                    <option value="Montsant">Montsant</option>
+                    <option value="Penedès">Penedès</option>
+                    <option value="Priorat">Priorat</option>
+                    <option value="Terra Alta">Terra Alta</option>
+                    
+                    <option value="Arbois">Arbois</option>
+                    <option value="Champagne">Champagne</option>
+                    <option value="Givry">Givry</option>
+                </select>
+            </div>
+        </div>
+        <span class="openNav2">&#9776; {{username}} List</span>
+    </div>    
+</template>           
+
+<!-- MASTER LIST -->
+
+<template name="wineDisplay">  
+        <div class="row list-row">
+            <div class="col-md-12">
+                <div class="side-list">
+                    <div class="col-md-12">
+                        {{> sidenavMaster}}  
+                    </div>
+                </div>  
+                <div class="stats">
+                    <span class="check-hide">
+                        <label class="hide-completed"><input type="checkbox"/>&nbsp;Hide <Span class="off">&#10005;</Span></label>
+                    </span>
+                    <span class="available">
+                        Total <strong>{{getFilterUser}}</strong> {{userFilterCount}} / 
+                        <Span class="on">{{availableWines}} &#10003;</Span>
+                        <Span class="off">{{unavailableWines}} &#10005;</Span>
+                    </span>
+                    {{#if filtering_types}}
+                    <span class="available">
+                        <strong>{{getFilterType}}</strong> {{typeCount}} / 
+                        <Span class="on">{{availableTypeCount}} &#10003;</Span>
+                        <Span class="off">{{unavailableTypeCount}} &#10005;</Span>
+                    </span>
+                    {{/if}}
+                    {{#if filtering_country}}
+                    <span class="available">
+                        <strong>{{getFilterCountry}}</strong> {{countryCount}} / 
+                        <Span class="on">{{availableCountryCount}} &#10003;</Span>
+                        <Span class="off">{{unavailableCountryCount}} &#10005;</Span>
+                    </span>
+                    {{/if}}
+                    {{#if filtering_DO}}
+                    <span class="available">
+                        <strong>{{getFilterDO}}</strong> {{DOCount}} / 
+                        <Span class="on">{{availableDOCount}} &#10003;</Span>
+                        <Span class="off">{{unavailableDOCount}} &#10005;</Span>
+                    </span>
+                    {{/if}}
+                </div>
+                    <!--
+                    {{#if filtering_wines}}
+                    <h6 class="row-fixed-counters tag-userList">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Filtering: <strong>{{getFilterUser}} ({{userFilterCount}})</strong>&nbsp;&nbsp;Click <a href="#" class="js-unset-wine-filter"><strong>HERE</strong></a> to see all.</h6>
+                    {{/if}}
+                    -->
+            </div>
+        </div>   
+        <div class="row wine-row"> 
+            {{#each wines}}
+            <div class="col-md-4 col-s-6 col-xs-12" id="{{_id}}">
+                {{> wine}}
+            </div>
+            {{/each}}
+        </div>    
+</template>
+
+<!-- MASTER SIDENAV -->
+
+<template name="sidenavMaster">
+    <div class="openbtn2">
+        <div id="mySidenav" class="sidenav2">
+            <a href="javascript:void(0)" class="closebtn2 closeNav2">&times;</a>
+            <a class="unfilterUsers" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all wines</a>
+            <div class="optionsUsers">
+                <select class="selectUsers" name="wines" id="wineUsers">
+                    <option value='' disabled selected style='display:none;'>Select Menu</option>
+                    {{#each user}}
+                    <option value="{{_id}}">{{username}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="optionsTypes">
+                <a class="side unfilterTypes" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all types</a>  
+                <select class="selectTypes" name="wines" id="wineTypes">
+                    <option value="" default>Filter by type</option>
+                    <option value="Copas">By the Glass</option>
+                    <option value="Espumoso">Sparkling</option>
+                    <option value="Espumoso Rosado">Rose Sparkling</option>
+                    <option value="Generoso">Fortified</option>
+                    <option value="Blanco">White</option>
+                    <option value="Rosado">Rose</option>
+                    <option value="Tinto">Tinto</option>
+                    <option value="Dulce">Sweet</option>  
+                </select>
+            </div>
+            <div class="optionsCountry">
+                <a class="side unfilterCountry" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all countries</a>  
+                <select class="selectCountry" name="wines" id="wineCountry">
+                    <option value="" default>Filter by country</option>
+                    <option value="España">Spain</option>
+                    <option value="Francia">France</option>
+                    <option value="Italia">Italy</option>
+                    <option value="Alemania">Germany</option>
+                    <option value="Portugal">Portugal</option>
+                </select>
+            </div>
+            <div class="optionsDO">
+                <a class="side unfilterDO" href="#"><span class="glyphicon glyphicon-refresh" aria-hidden="true"></span>&nbsp;&nbsp;See all DOs</a>
+                <select class="selectDO" name="wines" id="wineDO">
+                    <option value="" default>Filter by DO</option>
+                    <option value="Alella">Alella</option>
+                    <option value="Cava">Cava</option>
+                    <option value="Conca de Barberà">Conca de Barberà</option>
+                    <option value="Conca del Riu Anoia">Conca del Riu Anoia</option>
+                    <option value="Corpinnat">Corpinnat</option>
+                    <option value="Costers del Segre">Costers del Segre</option>
+                    <option value="Empordà">Empordà</option>
+                    <option value="Jerez">Jerez</option> 
+                    <option value="Montsant">Montsant</option>
+                    <option value="Penedès">Penedès</option>
+                    <option value="Priorat">Priorat</option>
+                    <option value="Terra Alta">Terra Alta</option>
+                    
+                    <option value="Arbois">Arbois</option>
+                    <option value="Champagne">Champagne</option>
+                    <option value="Givry">Givry</option>
+                </select>
+            </div>
+        </div>
+        <span class="openNav2">&#9776; Master List</span>
+    </div>    
+</template>     
+
+<!-- INVENTORY -->
+
+<template name="wineInv">
+    <div class="row list-row">
+        <div class="col-md-12">
+            <div class="side-list">
+                <div class="col-md-12">
+                    {{> sidenavList}}  
+                </div>
+            </div>  
+            <div class="statsInv">
+                <!--
+                <span class="check-hide">
+                    <label class="hide-completed"><input type="checkbox"/>&nbsp;Hide <Span class="off">&#10005;</Span></label>
+                </span>
+                -->
+                <span class="available">
+                    Total <strong>{{username}}</strong> {{userCount}} / 
+                    <Span class="on">{{availableWines}} &#10003;</Span>
+                    <Span class="off">{{unavailableWines}} &#10005;</Span>
+                </span>
+                {{#if filtering_types}}
+                <span class="available">
+                    <strong>{{getFilterType}}</strong> {{totalTypeCount}} / 
+                    <Span class="on">{{typeCount}} &#10003;</Span>
+                    <Span class="off">{{notTypeCount}} &#10005;</Span>
+                </span>
+                {{/if}}
+                {{#if filtering_country}}
+                    <span class="available">
+                        <strong>{{getFilterCountry}}</strong> {{totalCountryCount}} / 
+                        <Span class="on">{{countryCount}} &#10003;</Span>
+                        <Span class="off">{{notCountryCount}} &#10005;</Span>
+                    </span>
+                {{/if}}
+                {{#if filtering_DO}}
+                <span class="available">
+                    <strong>{{getFilterDO}}</strong> {{totalDoCount}} / 
+                    <Span class="on">{{doCount}} &#10003;</Span>
+                    <Span class="off">{{notDoCount}} &#10005;</Span>
+                </span>
+                {{/if}}
+            </div>
+        </div>
+    </div>   
+    <div class="containerTable">
+        <table class="inv" id="myTable">
+            <tr class="sticky">
+                <th>&#10005;</th>
+                <th class="number"><label class="sort-number"><input type="radio" name="filter"/></label><a href="#" class="js-sort-number"> # &uarr;&darr;</a></th>
+                <!--
+                <th class="supplier">Id</th>
+                -->
+                <th class="image">Img</th>
+                <th class="producer"><label class="sort-name"><input type="radio" name="filter"/></label><a href="#" class="js-sort-name"> Name &uarr;&darr;</a></th>
+                <th class="producer"><label class="sort-producer"><input type="radio" name="filter"/></label><a href="#" class="js-sort-producer"> Producer &uarr;&darr;</a></th>
+                <th class="vintage"><label class=""><input type="radio" name="filter"/></label><a href="#" class="js-sort-producer"> Vintage &uarr;&darr;</a></th>
+                <th class="price"><label class="sort-price"><input type="radio" name="filter"/></label><a href="#" class="js-sort-price"> Price &uarr;&darr;</a></th>
+                <th><label class="sort-do"><input type="radio" name="filter"/></label><a href="#" class="js-sort-do"> DO &uarr;&darr;</a></th>
+                <th class="vintage"><label class="sort-variety"><input type="radio" name="filter"/></label><a href="#" class="js-sort-variety"> Variety &uarr;&darr;</a></th>
+                <th class="price"><label class="sort-type"><input type="radio" name="filter"/></label><a href="#" class="js-sort-type"> Type &uarr;&darr;</a></th>
+                <th class="vintage"><label class="sort-country"><input type="radio" name="filter"/></label><a href="#" class="js-sort-country"> Country &uarr;&darr;</a></th>
+                <th class="vintage"><label class="sort-region"><input type="radio" name="filter"/></label><a href="#" class="js-sort-region"> Region &uarr;&darr;</a></th>
+                <th class="date"><label class="sort-cost"><input type="radio" name="filter"/></label><a href="#" class="js-sort-cost"> Cost &uarr;&darr;</a></th>
+                <th class="supplier"><label class="sort-supplier"><input type="radio" name="filter"/></label><a href="#" class="js-sort-supplier"> Supplier &uarr;&darr;</a></th>
+                <th class="abv"><label class="sort-producer"><input type="radio" name="filter"/></label><a href="#" class="js-sort-producer"> abv &uarr;&darr;</a></th>
+                <th class="cl"><label class="sort-cl"><input type="radio" name="filter"/></label><a href="#" class="js-sort-cl"> cl &uarr;&darr;</a></th>
+                <th class="abv"><label class="sort-qty"><input type="radio" name="filter"/></label><a href="#" class="js-sort-qty"> Qty &uarr;&darr;</a></th>
+                <th class="date"><label class="sort-date"><input type="radio" name="filter"/></label><a href="#" class="js-sort-date"> Date &uarr;&darr;</a></th>
+                <!--
+                <th>Owner</th>
+                -->
+            </tr>
+            {{#each wines}}
+            <tr>
+                <td><input type="checkbox" checked="{{checked}}" class="toggle-checked"/></td>
+                <td>{{> editableText collection="wines" field="w_ref"}}</td>
+                <!--
+                <td class="dateWide"><a href="/editWine/{{_id}}">{{_id}}</a></td>
+                -->
+                <td>{{> editableText collection="wines" field="w_img"}}</td>
+                <td><a href="/editWine/{{_id}}">{{w_name}}</a></td>
+                <td>{{w_producer}}</td>
+                <td>{{> editableText collection="wines" field="w_vintage"}}</td>
+                <td>{{> editableText collection="wines" field="w_price"}}</td>
+                <td>{{w_do}}</td>
+                <td class="dateWide">{{w_variety}}</td>
+                <td>{{w_type}}</td>
+                <td>{{w_country}}</td>
+                <td class="dateWide">{{w_region}}</td>
+                <td>{{> editableText collection="wines" field="w_cost"}}</td>
+                <td>{{w_supplier}}</td>
+                <td>{{w_abv}}</td>
+                <td>{{w_cl}}</td>
+                <td>{{> editableText collection="wines" field="w_qty"}}</td>
+                <td class="dateWide">{{createdAt}}</td>
+                <!--
+                <td class="dateWide">{{createdBy}}</td>
+                -->
+            </tr>
+            {{/each}}
+        </table> 
+    </div>  
+</template>
+
+<!-- EDITABLE -->
+
+<template name="wineEdit">
+    <div>
+        {{> singleEdit}}        
+    </div>   
+</template>
+
+

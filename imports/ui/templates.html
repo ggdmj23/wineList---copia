@@ -1,0 +1,224 @@
+<!-- DATE DISPLAY 
+
+<template name="date_display"> 
+    <nav class="navbar navbar-default navbar-fixed-bottom footer">
+        <div class="navbar-brand date-cont">
+            <span class="date"><small>{{current_date}}</small></span>
+        </div>    
+    </nav>    
+</template> 
+-->
+
+<!-- USERLIST -->
+
+<template name="listAll">
+    <div class="wine-row-fixedUserList">
+        {{#each user}}
+        <div class="col-md-12">
+            <span>Id: <strong>{{_id}}</strong></span>
+            <span>Name: <strong>{{username}}</strong></span>
+            <span>Email: <strong>{{userEmail}}</strong></span>    
+        </div>    
+        {{/each}}
+    </div>       
+</template>
+
+<!-- MENU THUMBNAIL -->
+
+<template name="wineList"> 
+    <div class="container thumbnailMenu">
+        <div class="wineName">
+            <h4 class="wineTitle"><strong>{{w_name}}&nbsp;&nbsp;{{w_vintage}}</strong></h4>
+        </div>
+        <div class="img-contMenu">
+            <a href="/wines/{{_id}}"><img class="imgMenu" src="{{w_img}}"/></a>
+        </div>
+        <div class="captionMenu">
+            <ul>
+                <Li>Producer: <strong>{{w_producer}}</strong></Li>
+                <Li>DO: <strong>{{w_do}}</strong></Li>
+                <Li>Varieties: <strong>{{w_variety}}</strong></Li>
+                <Li>Price: <strong>{{w_price}} €</strong></Li>
+            </ul>
+        </div>
+        <div>
+            <span class="rating">Rating: {{rating}}</span>
+            {{> starsRating id=_id class="js-rate-wine mystar" mutable=true }}
+            <span class="miniLogo1"><span class="winMini1">Win</span><span class="e-Mini1"> e-</span><span class="listMini1">List</span><sup> &reg;</sup></span>
+        </div>    
+    </div>
+</template>
+
+<!-- LIST THUMBNAIL -->
+
+<template name="wine">
+    <div class="thumbnail {{#if checked}}checked{{/if}}">
+        <div class="edit">
+            <p class="list-owner">Menu: <strong><a class="js-set-wine-filter" href="/Menu">{{getUser createdBy}}</a></strong></p>
+            <label><input type="checkbox" checked="{{checked}}" class="toggle-checked"/> Hide</label><span class="private-off {{#if private}}private-on{{/if}}">PRIVATE &#10003;</span><span class="public-off {{#if private}}public-on{{/if}}">PUBLIC</span>
+            <button class="delete btn btn-warning">Delete</button>
+            {{#if isOwner}}
+            <button class="button-private btn btn-warning toggle-private">
+                {{#if private}}
+                Private
+                {{else}}
+                Public
+                {{/if}}
+            </button>
+            {{/if}}
+        </div>
+        <div class="img-cont">
+            <a href="/editWine/{{_id}}"><img class="img" src="{{w_img}}"/></a>
+        </div>
+        <div class="caption">
+            <li class="{{#if private}}private{{/if}}"><strong><small>Name: </small></strong>{{w_name}}</li>
+            <li class="{{#if private}}private{{/if}}"><strong><small>Producer: </small></strong>{{w_producer}}</li>
+            <li class="{{#if private}}private{{/if}}"><strong><small>Vintage: </small></strong>{{w_vintage}}</li>
+            <li class="{{#if private}}private{{/if}}"><strong><small>Price: </small></strong>{{w_price}} €</li>
+            <li class="{{#if private}}private{{/if}}"><strong><small>DO: </small></strong>{{w_do}}</li>
+            <li class="{{#if private}}private{{/if}}"><strong><small>Variety: </small></strong>{{w_variety}}</li>
+            <li class="{{#if private}}private{{/if}}"><strong><small>Ref #: </small></strong>{{w_ref}}</li>
+            <li class="{{#if private}}private{{/if}}"><strong><small>Note: </small></strong>{{w_text}}</li>
+        </div>  
+        <div class="data private-off {{#if private}}private-on{{/if}}">
+            <li><strong>Type: </strong>{{w_type}}</li>
+            <li><strong>Country: </strong>{{w_country}}</li>
+            <li><strong>Region: </strong>{{w_region}}</li>
+            <li><strong>abv: </strong>{{w_abv}} %</li>
+            <li><strong>Format: </strong>{{w_cl}} cl</li>
+            <li><strong>Supplier: </strong>{{w_supplier}}</li>
+            <li><strong>Cost: </strong>{{w_cost}} €</li>
+            <li><strong>Qty: </strong>{{w_qty}}</li>
+            <li><strong>Ref: </strong>{{w_ref}}</li>
+            <li><strong>Date: </strong>{{createdAt}}</li>
+            <li><strong>Owner: </strong>{{owner}}</li>
+            <li><strong>id: </strong>{{_id}}</li>
+        </div>
+        <div class="stars">
+            <h5>Rating: <strong>{{rating}}</strong></h5>
+        </div>    
+    </div>    
+</template>
+
+<!-- SINGLE WINE -->
+
+<template name="singleWine">
+    <div class="row">
+        <div class="col-md-12 col-s-12 col-xs-12">
+            <div class="thumbnailSingleMenu">
+                <div class="container img-contSingleMenu">
+                    <a href="##" onClick="history.go(-1); return false;"><img class="imgSingleMenu" src="{{w_img}}"/></a>
+                </div>
+                <div class="captionSingleMenu">
+                    <div class="wineSingleName">
+                        <h4><strong>{{w_name}}&nbsp;&nbsp;{{w_vintage}}</strong></h4>
+                        <h5><strong>{{w_producer}}</strong></h5>
+                    </div>
+                    <div class="captionData">
+                        <ul >
+                            <Li>DO: <strong>{{w_do}}</strong></Li>
+                            <Li>Varieties: <strong>{{w_variety}}</strong></Li>
+                            <Li>Price: <strong>{{w_price}} €</strong></Li>
+                            <li>Type: <strong>{{w_type}}</strong></li>
+                            <li>Country: <strong>{{w_country}}</strong></li>
+                            <li>Region: <strong>{{w_region}}</strong></li>
+                            <li>abv: <strong>{{w_abv}} %</strong></li>
+                            <li>Format: <strong>{{w_cl}} cl</strong></li>
+                            <li>Notes: <strong>{{w_text}}</strong></li>
+                        </ul>
+                        <div class="ratingSingle">
+                            <h4>Rating: {{rating}}</h4>
+                        </div>    
+                   </div>
+                </div> 
+                <div class="miniLogo">
+                    <a href="##" onClick="history.go(-1); return false;">
+                        <span class="winMini">Win</span><span class="e-Mini"> e-</span><span class="listMini">List</span><sup> &reg;</sup>
+                    </a>   
+                </div>
+            </div>
+        </div>
+    </div>
+</template>
+
+<!-- SINGLE WINE HEADER -->
+
+<template name="headerSingle"> 
+    <header>
+        <div class="wine-row-fixedMenu">
+            <div class="col-md-12">
+                <h2 class="rest-name">Menu: {{username}}</h2>
+                {{> sidenav}}
+            </div>
+        </div>       
+     </header>   
+</template>
+
+<!-- SINGLE EDIT -->
+
+<template name="singleEdit">
+    <div class="row thumbnailEdit {{#if checked}}checked{{/if}}">
+        <div class="col-md-4 col-s-12 col-xs-12">
+            <div class="editEdit">
+                <p class="list-ownerEdit">List: <strong><a class="js-set-wine-filter" href="/userList">{{getUser createdBy}}</a></strong></p>
+                <label><input type="checkbox" checked="{{checked}}" class="toggle-checked"/> Hide</label>
+                <button class="deleteEdit btn btn-success"><a href="##" onClick="history.go(-1); return false;">Save</a></button>
+                {{#if isOwner}}
+                <button class="button-privateEdit btn btn-warning toggle-private">
+                    {{#if private}}
+                    Private
+                    {{else}}
+                    Public
+                    {{/if}}
+                </button>
+                {{/if}}
+                <div class="img-contEdit">
+                    <a href="##" onClick="history.go(-1); return false;"><img class="imgEdit" src="{{w_img}}"/></a>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4 col-s-12 col-xs-12">
+            <div class="captionEdit {{#if private}}private-onEdit{{/if}}">
+                <li><b>Name: </b>{{> editableText collection="wines" field="w_name"}}</li>
+                <li><b>Producer: </b>{{> editableText collection="wines" field="w_producer"}}</li>
+                <li><b>Vintage: </b>{{> editableText collection="wines" field="w_vintage"}}</li>
+                <li><b>Price: </b>{{> editableText collection="wines" field="w_price"}} €</li>
+                <li><b>Do: </b>{{> editableText collection="wines" field="w_do"}}</li>
+                <li><b>Variety: </b>{{> editableText collection="wines" field="w_variety"}}</li>
+                <li><b>Type: </b>{{> editableText collection="wines" field="w_type"}}</li>
+                <li><b>Country: </b>{{> editableText collection="wines" field="w_country"}}</li>
+                <li><b>Region: </b>{{> editableText collection="wines" field="w_region"}}</li>
+                <li><b>Note: </b>{{> editableText collection="wines" field="w_text"}}</li>
+            </div>
+        </div>
+        <div class="col-md-4 col-s-12 col-xs-12">    
+            <div class="dataEdit private-offEdit {{#if private}}private-onEdit{{/if}}">
+                <li><b>abv: </b>{{> editableText collection="wines" field="w_abv"}} %</li>
+                <li><b>Format: </b>{{> editableText collection="wines" field="w_cl"}} cl</li>
+                <li><b>Supplier: </b>{{> editableText collection="wines" field="w_supplier"}}</li>
+                <li><b>Cost: </b>{{> editableText collection="wines" field="w_cost"}} €</li>
+                <li><b>Qty: </b>{{> editableText collection="wines" field="w_qty"}}</li>
+                <li><b>Ref: </b>{{> editableText collection="wines" field="w_ref"}}</li>
+                <li><b>Date: </b>{{createdAt}}</li>
+                <li><b>Owner id: </b>{{owner}}</li>
+                <li><b>Wine id: </b>{{_id}}</li>
+                <li><b>Rating: </b>{{rating}}</li>
+            </div>
+        </div>    
+    </div>
+</template>
+
+<!-- SINGLE WINE HEADER -->
+
+<template name="headerSingleEdit"> 
+    <header>
+        <div class="wine-row-fixedMenu">
+            <div class="col-md-12">
+                <h2 class="rest-name">Menu: {{username}}</h2>
+                {{> sidenavList}}
+            </div>
+        </div>       
+     </header>   
+</template>
+
+
